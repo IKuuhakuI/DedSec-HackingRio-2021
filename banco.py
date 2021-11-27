@@ -1,21 +1,30 @@
 import sqlite3
+import hashlib
+from sqlite3.dbapi2 import Error
 
-def setupDb():
-    banco = sqlite3.connect('dados.db')
+# Função para conectar com o banco de dados
+def conectar ():
+    banco = None
+
+    try:
+        banco = sqlite3.connect('dados.db')
+
+        configurarTabelas (banco)
+
+    except Error as e:
+        print (e)
+
+    return banco
+
+# Inicia todas as tabelas do banco
+def configurarTabelas (banco):
     cursor = banco.cursor()
 
     cursor.execute("CREATE TABLE IF NOT EXISTS alunos (\
-                    id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,\
+                    username text NOT NULL PRIMARY KEY,\
                     nome text NOT NULL,\
                     sobrenome text NOT NULL,\
                     email text NOT NULL,\
                     senha text NOT NULL)")
 
-    # cursor.execute("INSERT INTO alunos (nome, sobrenome, email, senha) VALUES ('Luiz', 'Carrion', 'teste@gmail.com', '12345')")
-
-    # cursor.execute("SELECT * FROM alunos")
-
-    # print (cursor.fetchall())
-
     banco.commit()
-
