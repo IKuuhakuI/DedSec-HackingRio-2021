@@ -1,6 +1,7 @@
 # Descrição: Esse arquivo contém todas as funções referentes aos
 # alunos
 
+from sqlite3.dbapi2 import Error
 import banco
 import hashlib
 
@@ -18,8 +19,9 @@ def registrarAluno (banco, username, nome, email, senha):
 
         criou = True
 
-    except:
+    except Error as e:
         criou = False
+        print ("Erro: ", e)
 
     # TESTES PARA VERIFICAR O ESTADO DA CRIAÇÃO #
     # cursor.execute("SELECT * FROM alunos")
