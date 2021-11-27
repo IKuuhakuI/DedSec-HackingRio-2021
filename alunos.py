@@ -26,27 +26,32 @@ def registrarAluno (banco, username, nome, sobrenome, email, senha):
 
     return criou
 
+# Verifica se o aluno e a senha estão corretas
 def validarAluno (banco, username, senha):
     cursor = banco.cursor()
 
+    # Hash da senha
     hash = hashlib.sha512(str(senha).encode("utf-8")).hexdigest()
 
-    cursor.execute ("SELECT senha FROM alunos WHERE username = (?)", (username,))
+    # busca pelo username e valida a senha
+    try:
+        cursor.execute ("SELECT senha FROM alunos WHERE username = (?)", (username,))
+        hashReal = cursor.fetchone()
 
-    hashReal = cursor.fetchone()
+        print (hashReal[0])
 
-    print (hashReal[0])
+        print (hash)
 
-    print (hash)
+        if hashReal[0] == hash:
+            return True
+        return False
 
-    if hashReal[0] == hash:
-        return True
-    
-    return False
+    except:
+        return False
 
 banco = banco.conectar()
 
-if validarAluno (banco, "Ziul", "123"):
+if validarAluno (banco, "Mig", "123"):
     print ("Logado com sucesso")
 else:
     print ("Usuario ou senha nao existe")
