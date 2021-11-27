@@ -10,7 +10,7 @@ def conectar ():
     banco = None
 
     try:
-        banco = sqlite3.connect('dados.db')
+        banco = sqlite3.connect('banco/dados.db')
 
         configurarTabelas (banco)
 

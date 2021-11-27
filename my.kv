@@ -52,14 +52,20 @@
                 root.logarHandle()
 
         Label:
-            text:"Clique [ref=registro]aqui[/ref] para se registrar"
-            font_size: (root.width**2 + root.height**2) / 13**4
-            size_hint: 0.35, 0.15
-            pos_hint: {"x":0.3, "top":0.1}
+            text:"[ref=registro]Clique aqui"+"\n"+" para se registrar[/ref]"
+            color: 0,0,0,1
+            font_size: (root.width**2 + root.height**2)**0.5 / 50
+            size_hint: 0.4, 0.12
+            pos_hint: {"x":0.05, "top":0.2}
+            halign: "center"
+            valign: "center"
             markup: True
             on_ref_press:
                 root.manager.transition.direction = "up"
                 root.registrarHandle()
+
+        
+        
 
 <TelaRegistro>
     name: "registro"

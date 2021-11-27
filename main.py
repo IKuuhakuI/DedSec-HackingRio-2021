@@ -4,10 +4,11 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.properties import ObjectProperty
 from kivy.uix.popup import Popup
 from kivy.uix.label import Label
-from banco import conectar
-from banco import configurarTabelas
-from alunos import registrarAluno
-from alunos import validarAluno
+import banco
+from banco.banco import conectar
+from banco.banco import configurarTabelas
+from banco.alunos import registrarAluno
+from banco.alunos import validarAluno
 
 # Funções das telas
 class TelaRegistro(Screen):
