@@ -26,7 +26,6 @@ def configurarTabelas (banco):
     cursor.execute("CREATE TABLE IF NOT EXISTS alunos (\
                     username text NOT NULL PRIMARY KEY,\
                     nome text NOT NULL,\
-                    sobrenome text NOT NULL,\
                     email text NOT NULL,\
                     senha text NOT NULL)")
 

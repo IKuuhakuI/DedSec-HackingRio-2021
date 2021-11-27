@@ -1,0 +1,45 @@
+<TelaLogin>
+    name: "login"
+    usuario: usuario
+    senha: senha
+
+    FloatLayout:
+        
+        Label:
+            text:"Usuário"
+            font_size: (root.width**2 + root.height**2) / 13**4
+            size_hint: 0.35 0.15
+            # No canto supeior (y=0.8) direito (x=0.7)
+            pos_hint: {"x":0.7, "top":0.9}
+
+        TextInput:
+            id: usuario
+            font_size: (root.width**2 + root.height**2) / 13**4
+            size_hint: 0.4, 0.15
+            # Um pouco abaixo do usuario
+            pos_hint: {"x":0.7, "top":0.7}
+            multilie: False
+
+        Label:
+            text:"Senha"
+            font_size: (root.width**2 + root.height**2) / 13**4
+            size_hint: 0.35 0.15
+            pos_hint: {"x":0.7, "top":0.5}
+
+        TextInput:
+            id: senha
+            font_size: (root.width**2 + root.height**2) / 13**4
+            size_hint: 0.4, 0.15
+            # Um pouco abaixo do usuario
+            pos_hint: {"x":0.7, "top":0.3}
+            multilie: False
+
+        Button:
+            pos_hint: {"x":0.75,"y":0.1}
+            size_hint: 0.4, 0.1
+            font_size: (root.width**2 + root.height**2) / 13**4
+            text:"Login"
+
+        
+        
+            

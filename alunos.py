@@ -5,14 +5,14 @@ import banco
 import hashlib
 
 # Registra os alunos
-def registrarAluno (banco, username, nome, sobrenome, email, senha):
+def registrarAluno (banco, username, nome, email, senha):
     cursor = banco.cursor()
 
     hash = hashlib.sha512(str(senha).encode("utf-8")).hexdigest()
 
     try:
-        cursor.execute("INSERT INTO alunos (username, nome, sobrenome, email, senha) VALUES\
-                        (?, ?, ?, ?, ?)", (username, nome, sobrenome, email, hash))
+        cursor.execute("INSERT INTO alunos (username, nome,email, senha) VALUES\
+                        (?, ?, ?, ?, ?)", (username, nome, email, hash))
 
         banco.commit()
 
