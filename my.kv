@@ -8,7 +8,7 @@
         Label:
             text:"Usuário"
             font_size: (root.width**2 + root.height**2) / 13**4
-            size_hint: 0.35 0.15
+            size_hint: 0.35, 0.15
             # No canto supeior (y=0.8) direito (x=0.7)
             pos_hint: {"x":0.7, "top":0.9}
 
@@ -23,14 +23,13 @@
         Label:
             text:"Senha"
             font_size: (root.width**2 + root.height**2) / 13**4
-            size_hint: 0.35 0.15
+            size_hint: 0.35, 0.15
             pos_hint: {"x":0.7, "top":0.5}
 
         TextInput:
             id: senha
             font_size: (root.width**2 + root.height**2) / 13**4
             size_hint: 0.4, 0.15
-            # Um pouco abaixo do usuario
             pos_hint: {"x":0.7, "top":0.3}
             multilie: False
 
@@ -39,7 +38,111 @@
             size_hint: 0.4, 0.1
             font_size: (root.width**2 + root.height**2) / 13**4
             text:"Login"
+            on_release:
+                root.manager.transition.direction = "up"
+                root.logarHandle()
 
-        
-        
-            
+        Label:
+            text:"Clique [ref=registro]aqui[/ref] para se registrar"
+            font_size: (root.width**2 + root.height**2) / 13**4
+            size_hint: 0.35, 0.15
+            pos_hint: {"x":0.3, "top":0.1}
+            markup: True
+            on_ref_press:
+                root.manager.transition.direction = "up"
+                root.registrarHandle()
+
+<TelaRegistro>
+    name: "registro"
+    nome: nome
+    usuario: usuario
+    senha: senha
+    email: email
+    confirmar: confirmar
+
+    FloatLayout:
+        cols:1
+
+        FloatLayout:   
+            Label:
+                text:"Nome completo"
+                font_size: (root.width**2 + root.height**2) / 13**4
+                size_hint: 0.33, 0.10
+                pos_hint: {"x":0.1, "top":0.9}
+
+            TextInput:
+                id: nome
+                font_size: (root.width**2 + root.height**2) / 13**4
+                size_hint: 0.33, 0.10
+                pos_hint: {"x":0.4, "top":0.9}
+                multilie: False
+
+            Label:
+                text:"Nome de usuário"
+                font_size: (root.width**2 + root.height**2) / 13**4
+                size_hint: 0.33, 0.10
+                pos_hint: {"x":0.1, "top":0.75}
+
+            TextInput:
+                id: usuario
+                font_size: (root.width**2 + root.height**2) / 13**4
+                size_hint: 0.33, 0.10
+                pos_hint: {"x":0.4, "top":0.75}
+                multilie: False
+
+            Label:
+                text:"E-mail"
+                font_size: (root.width**2 + root.height**2) / 13**4
+                size_hint: 0.33, 0.10
+                pos_hint: {"x":0.1, "top":0.60}
+
+            TextInput:
+                id: email
+                font_size: (root.width**2 + root.height**2) / 13**4
+                size_hint: 0.33, 0.10
+                pos_hint: {"x":0.4, "top":0.60}
+                multilie: False
+
+            Label:
+                text:"Senha"
+                font_size: (root.width**2 + root.height**2) / 13**4
+                size_hint: 0.33, 0.10
+                pos_hint: {"x":0.1, "top":0.45}
+
+            TextInput:
+                id: senha
+                font_size: (root.width**2 + root.height**2) / 13**4
+                size_hint: 0.33, 0.10
+                pos_hint: {"x":0.4, "top":0.45}
+                multilie: False
+
+            Label:
+                text:"Confirmar senha"
+                font_size: (root.width**2 + root.height**2) / 13**4
+                size_hint: 0.33, 0.10
+                pos_hint: {"x":0.1, "top":0.30}
+
+            TextInput:
+                id: confirmar
+                font_size: (root.width**2 + root.height**2) / 13**4
+                size_hint: 0.33, 0.10
+                pos_hint: {"x":0.4, "top":0.30}
+                multilie: False
+
+            Button:
+                pos_hint: {"x":0.4,"y":0.15}
+                size_hint: 0.15, 0.1
+                font_size: (root.width**2 + root.height**2) / 13**4
+                text:"Registrar"
+                on_release:
+                    root.manager.transition.direction = "left"
+                    root.registrarHandle()
+
+            Button:
+                pos_hint: {"x":0.6,"y":0.15}
+                size_hint: 0.15, 0.1
+                font_size: (root.width**2 + root.height**2) / 13**4
+                text:"Voltar"
+                on_release:
+                    root.manager.transition.direction = "down"
+                    root.voltar()

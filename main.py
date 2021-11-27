@@ -30,9 +30,12 @@ class TelaRegistro(Screen):
             self.senha.text = ""
             self.confirmar.text = ""
     
+    def registrarHandle(self):
+        self.registrar(db)
+
     def voltar(self):
         self.reset()
-        self.current = "login"
+        sm.current = "login"
 
     def reset(self):
         self.nome.text = ""
@@ -53,10 +56,16 @@ class TelaLogin(Screen):
         else:
             exibirPopup("Login inválido","Usuário ou senha incorretos.")
             self.reset()
+
+    def logarHandle(self):
+        self.logar(db)
     
     def registrar(self,db):
         self.reset()
-        self.current = "registro"
+        sm.current = "registro"
+
+    def registrarHandle(self):
+        self.registrar(db)
 
     def reset(self):
         self.usuario.text = ""
