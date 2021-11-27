@@ -12,7 +12,7 @@ def registrarAluno (banco, username, nome, email, senha):
 
     try:
         cursor.execute("INSERT INTO alunos (username, nome,email, senha) VALUES\
-                        (?, ?, ?, ?, ?)", (username, nome, email, hash))
+                        (?, ?, ?, ?)", (username, nome, email, hash))
 
         banco.commit()
 
