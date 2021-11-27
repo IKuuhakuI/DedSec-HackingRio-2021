@@ -20,12 +20,12 @@ class TelaRegistro(Screen):
 
     # Obs: faça self.usuario.text para acessar o texto do objeto!
     def registrar(self,db):
-        if self.nome.text!="" and self.senha.text!="" and self.usuario.text!="" and self.email.text!="":
-            if self.senha.text == self.confirmar.text:
-                registrarAluno(db,self.usuario.text,self.nome.text,self.email.text,self.senha.text)
-                self.reset()
-                #sm.current = "status"
-                exibirPopup("Debug","Passou")
+        if self.nome.text!="" and self.senha.text!="" and self.usuario.text!="" and self.email.text!="" and self.senha.text == self.confirmar.text:
+            print(db)
+            retorno = registrarAluno(db,self.usuario.text,self.nome.text,self.email.text,self.senha.text)
+            self.reset()
+            #sm.current = "status"
+            exibirPopup("Debug","Passou")
         else:
             exibirPopup("Formulário inválido","Preecnha os campos com informações válidas")
             self.senha.text = ""
@@ -89,6 +89,7 @@ kv = Builder.load_file("my.kv")
 
 sm = WindowManager()
 db = conectar()
+print(db)
 
 telas = [TelaLogin(name="login"),\
         TelaRegistro(name="registro")\
