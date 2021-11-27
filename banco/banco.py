@@ -23,10 +23,18 @@ def conectar ():
 def configurarTabelas (banco):
     cursor = banco.cursor()
 
-    cursor.execute("CREATE TABLE IF NOT EXISTS alunos (\
+    cursor.execute ("CREATE TABLE IF NOT EXISTS alunos (\
                     username text NOT NULL PRIMARY KEY,\
                     nome text NOT NULL,\
                     email text NOT NULL,\
                     senha text NOT NULL)")
 
+    cursor.execute ("CREATE TABLE IF NOT EXISTS cursos (\
+                    id integer NOT NULL PRIMARY KEY,\
+                    nome text NOT NULL,\
+                    area text NOT NULL)")
+
+    cursor.execute ("CREATE TABLE IF NOT EXISTS perguntas (\
+                    id integer NOT NULL PRIMARY KEY,\
+                    )")
     banco.commit()
