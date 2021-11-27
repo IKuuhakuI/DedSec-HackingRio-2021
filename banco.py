@@ -1,3 +1,6 @@
+# Descrição: Esse arquivo possui funções necessárias para iniciar o banco
+# de dados e todas as tabelas que estão contidas nele.
+
 import sqlite3
 import hashlib
 from sqlite3.dbapi2 import Error

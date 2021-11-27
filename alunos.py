@@ -1,3 +1,6 @@
+# Descrição: Esse arquivo contém todas as funções referentes aos
+# alunos
+
 import banco
 import hashlib
 
