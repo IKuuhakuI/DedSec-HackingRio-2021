@@ -1,9 +1,10 @@
 import sqlite3
-
+def setupDb():
+    
 banco = sqlite3.connect('dados.db')
 cursor = banco.cursor()
 
-cursor.execute("CREATE TABLE alunos (\
+cursor.execute("CREATE TABLE IF NOT EXISTS alunos (\
                 id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,\
                 nome text NOT NULL,\
                 sobrenome text NOT NULL,\
