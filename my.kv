@@ -428,6 +428,14 @@
             keep_ratio: True
             source: "recursos/help.png"
 
+        BtnLoja:
+            id: btnAjuda
+            pos: [350, 500]
+            size_hint: [0.1, 0.1]
+            allow_stretch: True
+            keep_ratio: True
+            source: "recursos/moeda.png"
+
 <TelaAula>
     FloatLayout:
         Image:
@@ -461,7 +469,38 @@
                 root.manager.transition = NoTransition()
                 root.voltar()
 
-
+<TelaLoja>
+    FloatLayout:
+        Image:
+            id: background
+            pos: self.pos
+            size_hint: None, None
+            size: root.size
+            allow_stretch: True
+            keep_ratio: False
+            source: "recursos/fundoAzulPadrao.png"
+        Image:
+            pos: self.pos
+            size: self.size
+            allow_stretch: True
+            keep_ratio: True
+            source: "recursos/telaLoja.png"
+        ImageButtonAula:
+            id: barraXP
+            pos: 60, 450
+            size_hint: [0.35, 0.35]
+            allow_stretch: True
+            keep_ratio: True
+            source: "recursos/barraXP.png"
+        Button:
+            pos: [520, 530]
+            size_hint: 0.2, 0.1
+            font_size: (root.width**2 + root.height**2)**0.5 / 30
+            text:"Voltar"
+            on_release:
+                #root.manager.transition.direction = "down"
+                root.manager.transition = NoTransition()
+                root.voltar()
 #<TelaAjuda>
     #FloatLayout:
 

@@ -49,6 +49,12 @@ class BtnAjuda (ButtonBehavior, Image):
     def on_release(self):
         print ("Help")
 
+class BtnLoja (ButtonBehavior, Image):
+    def on_release(self):
+        global ultima_tela
+        ultima_tela = "marketing"
+        sm.current = "loja"
+
 # Funções das telas
 class TelaRegistro(Screen):
     nome= ObjectProperty(None)
@@ -204,6 +210,10 @@ class TelaAula(Screen):
     def voltar(self):
         sm.current = "marketing"
 
+class TelaLoja(Screen):
+    def voltar(self):
+        sm.current = "marketing"
+
 class WindowManager(ScreenManager):
     pass
 
@@ -229,6 +239,7 @@ telas = [TelaLogin(name="login"),\
         TelaMarketing(name="marketing"),\
         TelaAjuda(name="ajuda"),\
         TelaAula(name="aula"),\
+        TelaLoja(name="loja"),\
         #TelaInventario(name="inventario"),\
         ]
 for tela in telas:
