@@ -28,6 +28,8 @@ class ImageButtonMarketing (ButtonBehavior, Image):
         ultima_tela = "marketing"
 
         sm.current = "status"
+    def on_press(self):
+        pass
 
 class BtnTerra (ButtonBehavior, Image):
     def on_release(self):
@@ -156,15 +158,16 @@ class TelaAreas(Screen):
         global ultima_tela
         ultima_tela = "areas"
         sm.current = "marketing"
-        exibirPopup("Debug","Passou")
+        # exibirPopup("Debug","Passou")
 
     def voltar(self):
-        global usuario_logado
-        global ultima_tela
-        if (ultima_tela == "login" or ultima_tela == "registro"):
-            exit()
-        else:
-            sm.current = ultima_tela    
+        exit ()
+        #global usuario_logado
+        #global ultima_tela
+        #if (ultima_tela == "login" or ultima_tela == "registro"):
+        #    exit()
+        #else:
+        #    sm.current = ultima_tela    
 
 class TelaStatus(Screen):
 
@@ -178,7 +181,7 @@ class TelaStatus(Screen):
 class TelaMarketing(Screen):
 
     def voltar(self):
-        sm.current = ultima_tela
+        sm.current = "areas"
 
 class WindowManager(ScreenManager):
     pass

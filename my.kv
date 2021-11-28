@@ -364,7 +364,24 @@
             allow_stretch: True
             keep_ratio: True
             source: "recursos/terra.png"
-
+        
+        Image:
+            id: iconeAluno
+            pos: [440, 320]
+            size_hint: [0.2, 0.2]
+            allow_stretch: True
+            keep_ratio: True
+            source: "recursos/ovni.png"
+ 
+        Button:
+            pos: [570, 500]
+            size_hint: 0.2, 0.1
+            font_size: (root.width**2 + root.height**2)**0.5 / 30
+            text:"Voltar"
+            on_release:
+                #root.manager.transition.direction = "down"
+                root.manager.transition = NoTransition()
+                root.voltar()
     #canvas.before:
     #    Color:
     #        rgba: 0.04, 0.62, 0.75, 1
