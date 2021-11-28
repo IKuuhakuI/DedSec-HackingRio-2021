@@ -6,7 +6,7 @@
 
 #### Apresentação 
 
-Com a ascenção da modalidade de ensino à distância, cresceu também a preocupação com as altas taxas de evasão. O nosso produto é um **aplicativo mobile** que possibilita que instituições de **ensino profissionalizante** criem materiais didáticos <i>gameficados</i> e personalizados para seus alunos, aumentando o interesse pelo aprendizado.
+Com a ascenção da modalidade de ensino à distância, cresceu também a preocupação com as altas taxas de evasão. O nosso produto é um **aplicativo mobile** que possibilita que instituições de **capacitação e apoio ao empreendedorismo** fornecerem materiais didáticos <i>gameficados</i> e personalizados para seus alunos, aumentando o interesse pelo aprendizado.
 
 #### O Produto
 
