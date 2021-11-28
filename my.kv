@@ -240,11 +240,13 @@
 
     GridLayout:
         rows: 3
+        spacing: 20
+        padding: [20, 10]
 
         BoxLayout:
             orientation: "vertical"
-            size_hint: [1,1]
-            pos_hint: {"x":0, "y":0}
+            size_hint: [0.7,0.5]
+            
             Image:
                 source: "recursos/barraXP.png"
                 allow_stretch: True
@@ -253,13 +255,14 @@
 
         BoxLayout:
             orientation: "vertical"
-            size_hint: [1,1]
-            pos_hint: {"x":0, "y":0}
+            size_hint: [1,2]
             GridLayout:
                 cols: 3
+                spacing: 5
+                padding: [10, 10]
                 Button:
                     pos_hint: {"x":0,"y":0}
-                    size_hint:1,1
+                    size_hint:[1, 1]
                     font_size: (root.width**2 + root.height**2)**0.5 / 30
                     text:"Marketing"
                     on_release:
@@ -268,18 +271,19 @@
                         root.irMarketing()
                 Button:
                     pos_hint: {"x":0,"y":0}
-                    size_hint:1,1
+                    size_hint:[1,1]
                     font_size: (root.width**2 + root.height**2)**0.5 / 30
-                    text:"Gestão de pessoas"
+                    text:"Gestão"
                 Button:
                     pos_hint: {"x":0,"y":0}
-                    size_hint:1,1
+                    size_hint:[1,1]
                     font_size: (root.width**2 + root.height**2)**0.5 / 30
                     text:"Finanças"
         
         BoxLayout:
+            padding: [250, 0]
             orientation: "vertical"
-            size_hint: [1,1]
+            size_hint: [0.1,0.4]
             pos_hint: {"x":0, "y":0}
             Button:
                 pos_hint: {"x":0,"y":0}

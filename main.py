@@ -130,7 +130,7 @@ class TelaAreas(Screen):
 
     def pressionouImagem(self):
         global ultima_tela
-        ultima_tela = TelaAreas
+        ultima_tela = "areas"
         sm.current = "status"
 
     def irStatus(self):
