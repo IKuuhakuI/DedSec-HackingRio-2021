@@ -82,4 +82,5 @@ def confirmarAvatar (banco, username):
         print ("Erro: ", e)
         return False
 
+    banco.commit()
     return True

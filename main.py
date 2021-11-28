@@ -73,7 +73,7 @@ class TelaLogin(Screen):
                 sm.current = "avatar"
             else:
                 ultima_tela = "login"
-                self.current = "areas"
+                sm.current = "areas"
         else:
             exibirPopup("Login inválido","Usuário ou senha incorretos.")
             self.reset()
