@@ -28,12 +28,14 @@ class ImageButtonMarketing (ButtonBehavior, Image):
         ultima_tela = "marketing"
 
         sm.current = "status"
-    def on_press(self):
-        pass
 
 class BtnTerra (ButtonBehavior, Image):
     def on_release(self):
         print ("Terra")
+
+class BtnAjuda (ButtonBehavior, Image):
+    def on_release(self):
+        print ("Help")
 
 # Funções das telas
 class TelaRegistro(Screen):

@@ -343,7 +343,7 @@
 
         ImageButtonMarketing:
             id: barraXP
-            pos: 30, 420
+            pos: 60, 420
             size_hint: [0.35, 0.35]
             allow_stretch: True
             keep_ratio: True
@@ -374,7 +374,7 @@
             source: "recursos/ovni.png"
  
         Button:
-            pos: [570, 500]
+            pos: [520, 500]
             size_hint: 0.2, 0.1
             font_size: (root.width**2 + root.height**2)**0.5 / 30
             text:"Voltar"
@@ -382,6 +382,15 @@
                 #root.manager.transition.direction = "down"
                 root.manager.transition = NoTransition()
                 root.voltar()
+
+        BtnAjuda:
+            id: btnAjuda
+            pos: [420, 500]
+            size_hint: [0.1, 0.1]
+            allow_stretch: True
+            keep_ratio: True
+            source: "recursos/help.png"
+
     #canvas.before:
     #    Color:
     #        rgba: 0.04, 0.62, 0.75, 1
