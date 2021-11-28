@@ -72,7 +72,9 @@ class TelaLogin(Screen):
         self.usuario.text = ""
         self.senha.text = ""
 
-#class 
+#class TelaAvatar(ScreenManager):
+
+
 
 class WindowManager(ScreenManager):
     pass
@@ -94,7 +96,7 @@ print(db)
 telas = [TelaLogin(name="login"),\
         TelaRegistro(name="registro")\
         #TelaStatus(name="status"),\
-        #TelaStatus(name="avatar"),\
+#        TelaAvatar(name="avatar")\
         #TelaAreas(name="areas"),\
         #TelaMarketing(name="marketing"),\
         #TelaInventario(name="inventario"),\

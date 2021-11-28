@@ -1,3 +1,4 @@
+#: import NoTransition kivy.uix.screenmanager.NoTransition
 <TelaLogin>
     canvas.before:
         Color:
@@ -50,7 +51,8 @@
                 size_hint: 0.4, 0.12
                 text:"Login"
                 on_release:
-                    root.manager.transition.direction = "up"
+                    #root.manager.transition.direction = "up"
+                    root.manager.transition = NoTransition()
                     root.logarHandle()
 
             Label:
@@ -63,7 +65,8 @@
                 valign: "center"
                 markup: True
                 on_ref_press:
-                    root.manager.transition.direction = "up"
+                    #root.manager.transition.direction = "up"
+                    root.manager.transition = NoTransition()
                     root.registrarHandle()
         
         BoxLayout:
@@ -80,6 +83,7 @@
     canvas.before:
         Color:
             rgba: 1, 1, 1, 1
+            # 9 159 191
         Rectangle:
             pos: self.pos
             size: self.size
@@ -171,7 +175,8 @@
                 font_size: (root.width**2 + root.height**2)**0.5 / 30
                 text:"Registrar"
                 on_release:
-                    root.manager.transition.direction = "left"
+                    #root.manager.transition.direction = "left"
+                    root.manager.transition = NoTransition()
                     root.registrarHandle()
 
             Button:
@@ -180,5 +185,6 @@
                 font_size: (root.width**2 + root.height**2)**0.5 / 30
                 text:"Voltar"
                 on_release:
-                    root.manager.transition.direction = "down"
+                    #root.manager.transition.direction = "down"
+                    root.manager.transition = NoTransition()
                     root.voltar()
