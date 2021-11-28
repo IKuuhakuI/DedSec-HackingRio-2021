@@ -15,7 +15,7 @@ def conectar ():
         configurarTabelas (banco)
 
     except Error as e:
-        print (e)
+        print ("Erro: ", e)
 
     return banco
 
@@ -27,7 +27,8 @@ def configurarTabelas (banco):
                     username text NOT NULL PRIMARY KEY,\
                     nome text NOT NULL,\
                     email text NOT NULL,\
-                    senha text NOT NULL)")
+                    senha text NOT NULL,\
+                    temAvatar boolean NOT NULL DEFAULT false)")
 
     cursor.execute ("CREATE TABLE IF NOT EXISTS cursos (\
                     id integer NOT NULL PRIMARY KEY,\

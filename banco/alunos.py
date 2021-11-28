@@ -1,7 +1,7 @@
 # Descrição: Esse arquivo contém todas as funções referentes aos
 # alunos
 
-from sqlite3.dbapi2 import Error
+from sqlite3.dbapi2 import Cursor, Error
 import banco
 import hashlib
 
@@ -12,7 +12,7 @@ def registrarAluno (banco, username, nome, email, senha):
     hash = hashlib.sha512(str(senha).encode("utf-8")).hexdigest()
 
     try:
-        cursor.execute("INSERT INTO alunos (username, nome,email, senha) VALUES\
+        cursor.execute("INSERT INTO alunos (username, nome, email, senha) VALUES\
                         (?, ?, ?, ?)", (username, nome, email, hash))
 
         banco.commit()
@@ -49,6 +49,34 @@ def validarAluno (banco, username, senha):
             return True
         return False
 
-    except:
+    except Error as e:
         # Caso não tenha encontrado o username
+        print ("Erro: ", e)
         return False
+
+def verificarAvatar (banco, username):
+    cursor = banco.cursor()
+    
+    try:
+        cursor.execute ("SELECT temAvatar FROM alunos WHERE username = (?)", (username,))
+        temAvatar = cursor.fetchone()
+
+        if temAvatar[0] == False:
+            return False
+        else:
+            return True
+
+    except Error as e:
+        print ("Erro: ", e)
+        return False
+
+def confirmarAvatar (banco, username):
+    cursor = banco.cursor()
+
+    try:
+        cursor.execute ("UPDATE alunos SET temAvatar = true WHERE username = (?)", (username,))
+    except Error as e:
+        print ("Erro: ", e)
+        return False
+
+    return True
