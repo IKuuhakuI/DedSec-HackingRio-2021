@@ -29,6 +29,10 @@ class ImageButtonMarketing (ButtonBehavior, Image):
 
         sm.current = "status"
 
+class BtnTerra (ButtonBehavior, Image):
+    def on_release(self):
+        print ("Terra")
+
 # Funções das telas
 class TelaRegistro(Screen):
     nome= ObjectProperty(None)
