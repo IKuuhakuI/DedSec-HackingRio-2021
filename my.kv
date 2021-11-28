@@ -208,3 +208,84 @@
                 source: "recursos/menuAvatar.png"
                 allow_stretch: True
                 keep_ratio: True
+            Button:
+                pos_hint: {"x":0.2,"y":0.15}
+                size_hint: 0.2, 0.1
+                font_size: (root.width**2 + root.height**2)**0.5 / 30
+                text:"Confirmar"
+                on_release:
+                    #root.manager.transition.direction = "down"
+                    root.manager.transition = NoTransition()
+                    root.confirmarHandler()
+            Button:
+                pos_hint: {"x":0.6,"y":0.15}
+                size_hint: 0.2, 0.1
+                font_size: (root.width**2 + root.height**2)**0.5 / 30
+                text:"Voltar"
+                on_release:
+                    #root.manager.transition.direction = "down"
+                    root.manager.transition = NoTransition()
+                    root.voltar()
+
+<TelaAreas>
+    canvas.before:
+        Color:
+            rgba: 0.04, 0.62, 0.75, 1
+            # 9 159 191 255
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            
+    name: "areas"
+
+    GridLayout:
+        rows: 3
+
+        BoxLayout:
+            orientation: "vertical"
+            size_hint: [1,1]
+            pos_hint: {"x":0, "y":0}
+            Image:
+                source: "recursos/barraXP.png"
+                allow_stretch: True
+                keep_ratio: True
+
+        BoxLayout:
+            orientation: "vertical"
+            size_hint: [1,1]
+            pos_hint: {"x":0, "y":0}
+            GridLayout:
+                cols: 3
+                Button:
+                    pos_hint: {"x":0,"y":0}
+                    size_hint:1,1
+                    font_size: (root.width**2 + root.height**2)**0.5 / 30
+                    text:"Marketing"
+                    on_release:
+                        #root.manager.transition.direction = "down"
+                        root.manager.transition = NoTransition()
+                        root.irMarketing()
+                Button:
+                    pos_hint: {"x":0,"y":0}
+                    size_hint:1,1
+                    font_size: (root.width**2 + root.height**2)**0.5 / 30
+                    text:"Gestão de pessoas"
+                Button:
+                    pos_hint: {"x":0,"y":0}
+                    size_hint:1,1
+                    font_size: (root.width**2 + root.height**2)**0.5 / 30
+                    text:"Finanças"
+        
+        BoxLayout:
+            orientation: "vertical"
+            size_hint: [1,1]
+            pos_hint: {"x":0, "y":0}
+            Button:
+                pos_hint: {"x":0,"y":0}
+                size_hint:1,1
+                font_size: (root.width**2 + root.height**2)**0.5 / 30
+                text:"Voltar"
+                on_release:
+                    #root.manager.transition.direction = "down"
+                    root.manager.transition = NoTransition()
+                    root.voltar()

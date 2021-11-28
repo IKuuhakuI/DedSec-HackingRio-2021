@@ -12,8 +12,11 @@ from banco.banco import conectar
 from banco.banco import configurarTabelas
 from banco.alunos import registrarAluno
 from banco.alunos import validarAluno
+from banco.alunos import verificarAvatar
+from banco.alunos import confirmarAvatar
 
 usuario_logado = ""
+ultima_tela = "login"
 
 # Funções das telas
 class TelaRegistro(Screen):
@@ -23,17 +26,16 @@ class TelaRegistro(Screen):
     senha = ObjectProperty(None)
     confirmar = ObjectProperty(None)
 
-    # Obs: faça self.usuario.text para acessar o texto do objeto!
     def registrar(self,db):
         global usuario_logado
+        global ultima_tela
         if self.nome.text!="" and self.senha.text!="" and self.usuario.text!="" and self.email.text!="" and self.senha.text == self.confirmar.text:
             print(db)
             retorno = registrarAluno(db,self.usuario.text,self.nome.text,self.email.text,self.senha.text)
             usuario_logado = self.usuario.text
             self.reset()
-            if True:
-                sm.current = "avatar"
-            #exibirPopup("Debug","Passou")
+            ultima_tela = "registro"
+            sm.current = "avatar"
         else:
             exibirPopup("Formulário inválido","Preecnha os campos com informações válidas")
             self.senha.text = ""
@@ -43,7 +45,9 @@ class TelaRegistro(Screen):
         self.registrar(db)
 
     def voltar(self):
+        global ultima_tela
         self.reset()
+        ultima_tela = "registro"
         sm.current = "login"
 
     def reset(self):
@@ -59,12 +63,16 @@ class TelaLogin(Screen):
 
     def logar(self,db):
         global usuario_logado
-        if validarAluno(db,self.usuario.text,self.senha.text):
+        global ultima_tela
+        if (validarAluno(db,self.usuario.text,self.senha.text)):
             usuario_logado = self.usuario.text
             self.reset()
-            if True:
+            if (not(verificarAvatar(db,usuario_logado))):
+                ultima_tela = "login"
                 sm.current = "avatar"
-            #else: self.current = "areas"
+            else:
+                ultima_tela = "login"
+                self.current = "areas"
         else:
             exibirPopup("Login inválido","Usuário ou senha incorretos.")
             self.reset()
@@ -74,6 +82,8 @@ class TelaLogin(Screen):
     
     def registrar(self,db):
         self.reset()
+        global ultima_tela
+        ultima_tela = "login"
         sm.current = "registro"
 
     def registrarHandle(self):
@@ -97,14 +107,45 @@ class TelaAvatar(Screen):
 
     def confirmar(self,db):
         global usuario_logado
-        if True:
-            #confirmarAvatar(db,username)
-            #sm.current = "areas"
-            print(usuario_logado)
-            exibirPopup("Debug",usuario_logado)
+        global ultima_tela
+        confirmarAvatar(db,usuario_logado)
+        if (ultima_tela == "registro" or ultima_tela == "login"):
+            sm.current = "areas"
+        else:
+            sm.current = ultima_tela
+
+    def voltar(self):
+        global usuario_logado
+        global ultima_tela
+        if(ultima_tela == "registro" or ultima_tela == "login"):
+            exit()
+        else:
+            sm.current = ultima_tela
 
     def confirmarHandler(self):
         self.confirmar(db)
+
+class TelaAreas(Screen):
+
+    def irStatus(self):
+        global ultima_tela
+        ultima_tela = "areas"
+        #sm.current = "status"
+        exibirPopup("Debug","Passou")
+
+    def irMarketing(self):
+        global ultima_tela
+        ultima_tela = "areas"
+        #sm.current = "marketing"
+        exibirPopup("Debug","Passou")
+
+    def voltar(self):
+        global usuario_logado
+        global ultima_tela
+        if (ultima_tela == "login" or ultima_tela == "registro"):
+            exit()
+        else:
+            sm.current = ultima_tela    
 
 class WindowManager(ScreenManager):
     pass
@@ -126,8 +167,8 @@ print(db)
 telas = [TelaLogin(name="login"),\
         TelaRegistro(name="registro"),\
         #TelaStatus(name="status"),\
-        TelaAvatar(name="avatar")\
-        #TelaAreas(name="areas"),\
+        TelaAvatar(name="avatar"),\
+        TelaAreas(name="areas"),\
         #TelaMarketing(name="marketing"),\
         #TelaInventario(name="inventario"),\
         ]
