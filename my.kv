@@ -326,6 +326,7 @@
             allow_stretch: True
             keep_ratio: True
             source: "recursos/nivel.png"
+
         Label:
             color: 0,0,0,1
             text:"Quantidade de cursos: " + root.quantidadeCursos()
@@ -335,28 +336,32 @@
 
         Label:
             color: 0,0,0,1
-            text:"Medalhas:"
+            text: "Medalhas"
             font_size: 28
             size_hint: 0.33, 0.10
             pos_hint: {"x":0.55, "y":0.5}
-        Image:
+
+        ImageButtonTrofeu1:
             pos: 390, 200
             size_hint: [0.15, 0.15]
             allow_stretch: True
             keep_ratio: True
-            source: "recursos/trofeu.png"
-        Image:
+            source: "recursos/trofeu1.png"
+            
+        ImageButtonTrofeu2:
             pos: 510, 200
             size_hint: [0.15, 0.15]
             allow_stretch: True
             keep_ratio: True
-            source: "recursos/trofeu.png"
-        Image:
+            source: "recursos/trofeu2.png"
+
+        ImageButtonTrofeu3:
             pos: 630, 200
             size_hint: [0.15, 0.15]
             allow_stretch: True
             keep_ratio: True
-            source: "recursos/trofeu.png"
+            source: "recursos/trofeu3.png"
+
         Button:
             pos: [480, 121]
             size_hint: 0.2, 0.1
@@ -368,6 +373,7 @@
                 root.voltar()
 
 <TelaMarketing>
+    name: "marketing"
     FloatLayout:
         Image:
             id: background
@@ -501,13 +507,25 @@
                 #root.manager.transition.direction = "down"
                 root.manager.transition = NoTransition()
                 root.voltar()
-#<TelaAjuda>
-    #FloatLayout:
 
-    #canvas.before:
-    #    Color:
-    #        rgba: 0.04, 0.62, 0.75, 1
-    #        # 9 159 191 255
-    #    Rectangle:
-    #        pos: self.pos
-    #        size: self.size
+<TelaAjuda>
+    name: "ajuda"
+
+    FloatLayout:
+        Image:
+            pos: self.pos
+            size_hint: None, None
+            size: root.size
+            allow_stretch: True
+            keep_ratio: False
+            source: "recursos/fundoAzulPadrao.png"
+            # Mudar aqui
+        Button:
+            pos: [300, 50]
+            size_hint: 0.2, 0.1
+            font_size: (root.width**2 + root.height**2)**0.5 / 30
+            text:"Voltar"
+            on_release:
+                #root.manager.transition.direction = "down"
+                root.manager.transition = NoTransition()
+                root.voltar()

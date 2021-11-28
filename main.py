@@ -23,6 +23,13 @@ usuario_logado = ""
 ultima_tela = "login"
 quantidade_cursos = "7"
 
+# Funções auxiliares
+def exibirPopup(titulo, texto):
+    pop = Popup(title=titulo,
+                content=Label(text=texto),
+                size_hint=(None,None), size=(400,400))
+    pop.open()
+
 class ImageButtonMarketing (ButtonBehavior, Image):
     def on_release(self):
         global ultima_tela
@@ -34,26 +41,35 @@ class ImageButtonAula (ButtonBehavior, Image):
     def on_release(self):
         global ultima_tela
         ultima_tela = "aula"
-
         sm.current = "status"
-
 
 class BtnTerra (ButtonBehavior, Image):
     def on_release(self):
         global ultima_tela
         ultima_tela = "marketing"
-
         sm.current = "aula"
 
 class BtnAjuda (ButtonBehavior, Image):
     def on_release(self):
+        global ultima_tela
+        ultima_tela = "marketing"
+        sm.current = "ajuda"
         print ("Help")
 
 class BtnLoja (ButtonBehavior, Image):
     def on_release(self):
         global ultima_tela
-        ultima_tela = "marketing"
         sm.current = "loja"
+
+class ImageButtonTrofeu1 (ButtonBehavior, Image):
+    def on_release(self):
+        exibirPopup("Guru das pessoas","Voĉe concluiu o curso de gestão de pessoas!")
+class ImageButtonTrofeu2(ButtonBehavior, Image):
+    def on_release(self):
+        exibirPopup("Guru das finanças","Voĉe concluiu o curso de finanças!")
+class ImageButtonTrofeu3 (ButtonBehavior, Image):
+    def on_release(self):    
+        exibirPopup("Participativo","Voĉe concluiu mais de um curso com a gente!")
 
 # Funções das telas
 class TelaRegistro(Screen):
@@ -198,12 +214,23 @@ class TelaStatus(Screen):
     def voltar(self):
         sm.current = ultima_tela
 
-class TelaMarketing(Screen):
+    def nomeUsuario(self):
+        global usuario_logado
+        return usuario_logado
+
+class TelaMarketing(Screen): 
+
+    def quantidadeCursos(self):
+        global ultima_tela
+        global quantidade_cursos
+        return quantidade_cursos
+
     def voltar(self):
         sm.current = "areas"
 
 class TelaAjuda(Screen):
     def voltar (self):
+        global ultima_tela
         sm.current = ultima_tela
 
 class TelaAula(Screen):
@@ -212,17 +239,11 @@ class TelaAula(Screen):
 
 class TelaLoja(Screen):
     def voltar(self):
-        sm.current = "marketing"
+        global ultima_tela
+        sm.current = ultima_tela
 
 class WindowManager(ScreenManager):
     pass
-
-# Funções auxiliares
-def exibirPopup(titulo, texto):
-    pop = Popup(title=titulo,
-                content=Label(text=texto),
-                size_hint=(None,None), size=(400,400))
-    pop.open()
 
 # Configurações
 kv = Builder.load_file("my.kv")
@@ -239,7 +260,7 @@ telas = [TelaLogin(name="login"),\
         TelaMarketing(name="marketing"),\
         TelaAjuda(name="ajuda"),\
         TelaAula(name="aula"),\
-        TelaLoja(name="loja"),\
+        TelaLoja(name="loja")\
         #TelaInventario(name="inventario"),\
         ]
 for tela in telas:
