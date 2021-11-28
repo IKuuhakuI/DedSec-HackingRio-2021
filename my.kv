@@ -292,39 +292,73 @@
                 pos_hint: {"x":0,"y":0}
                 size_hint:1,1
                 font_size: (root.width**2 + root.height**2)**0.5 / 30
-                text:"Voltar"
+                text:"Sair"
                 on_release:
                     #root.manager.transition.direction = "down"
                     root.manager.transition = NoTransition()
                     root.voltar()
 
 <TelaStatus>
-    canvas.before:
-        Color:
-            rgba: 0.04, 0.62, 0.75, 1
-            # 9 159 191 255
-        Rectangle:
-            pos: self.pos
-            size: self.size
-
-    name: "status"
-
-    BoxLayout:
-        orientation: "vertical"
-        size_hint: [1,1]
-        pos_hint: {"x":0, "y":0}
+    FloatLayout:
         Image:
-            source: "recursos/menuStatus.jpeg"
+            pos: self.pos
+            size_hint: None, None
+            size: root.size
+            allow_stretch: True
+            keep_ratio: False
+            source: "recursos/fundoAzulPadrao.png"
+        Image:
+            pos: 140, 80
+            size_hint: [0.75, 0.75]
+            allow_stretch: True
+            keep_ratio: False
+            source: "recursos/fundoAzulClaro.png"
+        Image:
+            pos: -160, 80
+            size_hint: [0.95, 0.75]
             allow_stretch: True
             keep_ratio: True
+            source: "recursos/avatarStatus.png"
+
+        Image:
+            pos: 410, 360
+            size_hint: [0.4, 0.4]
+            allow_stretch: True
+            keep_ratio: True
+            source: "recursos/nivel.png"
         Label:
             color: 0,0,0,1
             text:"Quantidade de cursos: " + root.quantidadeCursos()
-            font_size: (root.width**2 + root.height**2)**0.5 / 30
+            font_size: 28
             size_hint: 0.33, 0.10
-            pos_hint: {"x":0.6, "y":0.7}
+            pos_hint: {"x":0.55, "y":0.6}
+
+        Label:
+            color: 0,0,0,1
+            text:"Medalhas:"
+            font_size: 28
+            size_hint: 0.33, 0.10
+            pos_hint: {"x":0.55, "y":0.5}
+        Image:
+            pos: 390, 200
+            size_hint: [0.15, 0.15]
+            allow_stretch: True
+            keep_ratio: True
+            source: "recursos/trofeu.png"
+        Image:
+            pos: 510, 200
+            size_hint: [0.15, 0.15]
+            allow_stretch: True
+            keep_ratio: True
+            source: "recursos/trofeu.png"
+        Image:
+            pos: 630, 200
+            size_hint: [0.15, 0.15]
+            allow_stretch: True
+            keep_ratio: True
+            source: "recursos/trofeu.png"
         Button:
-            pos_hint: {"x":0.6,"y":0.15}
+            pos: [480, 121]
             size_hint: 0.2, 0.1
             font_size: (root.width**2 + root.height**2)**0.5 / 30
             text:"Voltar"

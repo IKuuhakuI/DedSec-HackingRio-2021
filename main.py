@@ -1,4 +1,5 @@
 from logging import root
+from typing import Text
 from kivy.app import App
 from kivy.lang import Builder
 from kivy.uix.screenmanager import NoTransition, ScreenManager, Screen
