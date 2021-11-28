@@ -202,7 +202,7 @@ class TelaAjuda(Screen):
 
 class TelaAula(Screen):
     def voltar(self):
-        sm.current = ultima_tela
+        sm.current = "marketing"
 
 class WindowManager(ScreenManager):
     pass
