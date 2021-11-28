@@ -17,6 +17,7 @@ from banco.alunos import confirmarAvatar
 
 usuario_logado = ""
 ultima_tela = "login"
+quantidade_cursos = "7"
 
 # Funções das telas
 class TelaRegistro(Screen):
@@ -127,11 +128,15 @@ class TelaAvatar(Screen):
 
 class TelaAreas(Screen):
 
+    def pressionouImagem(self):
+        global ultima_tela
+        ultima_tela = TelaAreas
+        sm.current = "status"
+
     def irStatus(self):
         global ultima_tela
         ultima_tela = "areas"
-        #sm.current = "status"
-        exibirPopup("Debug","Passou")
+        sm.current = "status"
 
     def irMarketing(self):
         global ultima_tela
@@ -146,6 +151,15 @@ class TelaAreas(Screen):
             exit()
         else:
             sm.current = ultima_tela    
+
+class TelaStatus(Screen):
+
+    def quantidadeCursos(self):
+        global quantidade_cursos
+        return quantidade_cursos
+    
+    def voltar(self):
+        sm.current = ultima_tela
 
 class WindowManager(ScreenManager):
     pass
@@ -166,9 +180,9 @@ print(db)
 
 telas = [TelaLogin(name="login"),\
         TelaRegistro(name="registro"),\
-        #TelaStatus(name="status"),\
         TelaAvatar(name="avatar"),\
         TelaAreas(name="areas"),\
+        TelaStatus(name="status")\
         #TelaMarketing(name="marketing"),\
         #TelaInventario(name="inventario"),\
         ]
