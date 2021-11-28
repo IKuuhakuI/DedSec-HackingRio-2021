@@ -10,6 +10,8 @@ from banco.banco import configurarTabelas
 from banco.alunos import registrarAluno
 from banco.alunos import validarAluno
 
+usuario_logado = ""
+
 # Funções das telas
 class TelaRegistro(Screen):
     nome= ObjectProperty(None)
@@ -20,12 +22,15 @@ class TelaRegistro(Screen):
 
     # Obs: faça self.usuario.text para acessar o texto do objeto!
     def registrar(self,db):
+        global usuario_logado
         if self.nome.text!="" and self.senha.text!="" and self.usuario.text!="" and self.email.text!="" and self.senha.text == self.confirmar.text:
             print(db)
             retorno = registrarAluno(db,self.usuario.text,self.nome.text,self.email.text,self.senha.text)
+            usuario_logado = self.usuario.text
             self.reset()
-            #sm.current = "status"
-            exibirPopup("Debug","Passou")
+            if True:
+                sm.current = "avatar"
+            #exibirPopup("Debug","Passou")
         else:
             exibirPopup("Formulário inválido","Preecnha os campos com informações válidas")
             self.senha.text = ""
@@ -50,10 +55,13 @@ class TelaLogin(Screen):
     senha = ObjectProperty(None)
 
     def logar(self,db):
+        global usuario_logado
         if validarAluno(db,self.usuario.text,self.senha.text):
+            usuario_logado = self.usuario.text
             self.reset()
-            #self.current("areas")
-            exibirPopup("Debug","Passou")
+            if True:
+                sm.current = "avatar"
+            #else: self.current = "areas"
         else:
             exibirPopup("Login inválido","Usuário ou senha incorretos.")
             self.reset()
@@ -72,9 +80,17 @@ class TelaLogin(Screen):
         self.usuario.text = ""
         self.senha.text = ""
 
-#class TelaAvatar(ScreenManager):
+class TelaAvatar(Screen):
+    def confirmar(self,db):
+        global usuario_logado
+        if True:
+            #confirmarAvatar(db,username)
+            #sm.current = "areas"
+            print(usuario_logado)
+            exibirPopup("Debug",usuario_logado)
 
-
+    def confirmarHandler(self):
+        self.confirmar(db)
 
 class WindowManager(ScreenManager):
     pass
@@ -94,9 +110,9 @@ db = conectar()
 print(db)
 
 telas = [TelaLogin(name="login"),\
-        TelaRegistro(name="registro")\
+        TelaRegistro(name="registro"),\
         #TelaStatus(name="status"),\
-#        TelaAvatar(name="avatar")\
+        TelaAvatar(name="avatar")\
         #TelaAreas(name="areas"),\
         #TelaMarketing(name="marketing"),\
         #TelaInventario(name="inventario"),\
