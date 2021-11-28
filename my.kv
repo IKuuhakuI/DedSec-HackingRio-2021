@@ -329,3 +329,31 @@
                 #root.manager.transition.direction = "down"
                 root.manager.transition = NoTransition()
                 root.voltar()
+
+<TelaMarketing>
+    FloatLayout:
+        Image:
+            id: background
+            pos: self.pos
+            size_hint: None, None
+            size: root.size
+            allow_stretch: True
+            keep_ratio: False
+            source: "recursos/fundoEspaco.jpg"
+
+        ImageButtonMarketing:
+            id: barraXP
+            pos: 30, 420
+            size_hint: [0.35, 0.35]
+            allow_stretch: True
+            keep_ratio: True
+            source: "recursos/barraXP.png"
+
+
+    #canvas.before:
+    #    Color:
+    #        rgba: 0.04, 0.62, 0.75, 1
+    #        # 9 159 191 255
+    #    Rectangle:
+    #        pos: self.pos
+    #        size: self.size

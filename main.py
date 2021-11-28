@@ -1,6 +1,7 @@
+from logging import root
 from kivy.app import App
 from kivy.lang import Builder
-from kivy.uix.screenmanager import ScreenManager, Screen
+from kivy.uix.screenmanager import NoTransition, ScreenManager, Screen
 from kivy.properties import ObjectProperty
 from kivy.uix.popup import Popup
 from kivy.uix.label import Label
@@ -14,10 +15,19 @@ from banco.alunos import registrarAluno
 from banco.alunos import validarAluno
 from banco.alunos import verificarAvatar
 from banco.alunos import confirmarAvatar
+from kivy.uix.behaviors import ButtonBehavior
+from kivy.uix.image import Image
 
 usuario_logado = ""
 ultima_tela = "login"
 quantidade_cursos = "7"
+
+class ImageButtonMarketing (ButtonBehavior, Image):
+    def on_release(self):
+        global ultima_tela
+        ultima_tela = "marketing"
+
+        sm.current = "status"
 
 # Funções das telas
 class TelaRegistro(Screen):
@@ -141,7 +151,7 @@ class TelaAreas(Screen):
     def irMarketing(self):
         global ultima_tela
         ultima_tela = "areas"
-        #sm.current = "marketing"
+        sm.current = "marketing"
         exibirPopup("Debug","Passou")
 
     def voltar(self):
@@ -158,6 +168,11 @@ class TelaStatus(Screen):
         global quantidade_cursos
         return quantidade_cursos
     
+    def voltar(self):
+        sm.current = ultima_tela
+
+class TelaMarketing(Screen):
+
     def voltar(self):
         sm.current = ultima_tela
 
@@ -182,8 +197,8 @@ telas = [TelaLogin(name="login"),\
         TelaRegistro(name="registro"),\
         TelaAvatar(name="avatar"),\
         TelaAreas(name="areas"),\
-        TelaStatus(name="status")\
-        #TelaMarketing(name="marketing"),\
+        TelaStatus(name="status"),\
+        TelaMarketing(name="marketing"),\
         #TelaInventario(name="inventario"),\
         ]
 for tela in telas:
