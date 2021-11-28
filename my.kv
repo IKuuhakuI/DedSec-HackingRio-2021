@@ -77,13 +77,11 @@
                 source: "recursos/logo.png"
                 allow_stretch: True
                 keep_ratio: True
-        
 
 <TelaRegistro>
     canvas.before:
         Color:
             rgba: 1, 1, 1, 1
-            # 9 159 191
         Rectangle:
             pos: self.pos
             size: self.size
@@ -188,3 +186,28 @@
                     #root.manager.transition.direction = "down"
                     root.manager.transition = NoTransition()
                     root.voltar()
+
+<TelaAvatar>
+    canvas.before:
+        Color:
+            rgba: 0.04, 0.62, 0.75, 1
+            # 9 159 191 255
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            
+    name: "avatar"
+
+    FloatLayout:
+        cols:1
+
+        FloatLayout:
+            Button:
+                pos_hint: {"x":0.25,"top":0.15}
+                size_hint: 0.2, 0.1
+                font_size: (root.width**2 + root.height**2)**0.5 / 30
+                text:"Confirmar"
+                on_release:
+                    #root.manager.transition.direction = "left"
+                    root.manager.transition = NoTransition()
+                    root.confirmarHandler()
