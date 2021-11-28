@@ -45,6 +45,9 @@ def validarAluno (banco, username, senha):
         # print (hashReal[0])
         # print (hash)
 
+        if hashReal == None:
+            return False
+
         if hashReal[0] == hash:
             return True
         return False
