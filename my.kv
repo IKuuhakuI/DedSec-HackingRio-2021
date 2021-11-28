@@ -197,62 +197,14 @@
             size: self.size
             
     name: "avatar"
-
+    
     FloatLayout:
-        cols:1
-
+        cols: 1
         BoxLayout:
             orientation: "vertical"
-            size_hint: [.85,.85]
-            pos_hint: {"right":0.95, "top":0.95}
-            canvas:
-                Color:
-                    rgba: 1,1,1,1
-                Rectangle:
-                    pos: self.pos
-                    size: self.size
-            BoxLayout:
-                orientation: "vertical"
-                size_hint: [.4,.4]
-                pos_hint: {"right":0.45, "top":0.8}
-                Image:
-                    source: "recursos/avatar.png"
-                    allow_stretch: True
-                    keep_ratio: True
-
-        FloatLayout:
-            Button:
-                background_color: 1, 1, 1, 0.2
-                pos_hint: {"x":0.22,"top":0.25}
-                size_hint: 0.2, 0.1
-                font_size: (root.width**2 + root.height**2)**0.5 / 30
-                text:"Confirmar"
-                color: 0, 0, 0, 1
-                on_release:
-                    #root.manager.transition.direction = "left"
-                    root.manager.transition = NoTransition()
-                    root.confirmarHandler()
-
-            Button:
-                background_color: 1, 1, 1, 0.2
-                pos_hint: {"x":0.72,"top":0.25}
-                size_hint: 0.2, 0.1
-                font_size: (root.width**2 + root.height**2)**0.5 / 30
-                text:"Voltar"
-                color: 0, 0, 0, 1
-                on_release:
-                    #root.manager.transition.direction = "left"
-                    root.manager.transition = NoTransition()
-                    root.confirmarHandler()
-
-            Button:
-                background_color: 1, 1, 1, 0.2
-                pos_hint: {"x":0.5,"top":0.85}
-                size_hint: 0.1, 0.1
-                font_size: (root.width**2 + root.height**2)**0.5 / 30
-                text:"1"
-                color: 0, 0, 0, 1
-                on_release:
-                    #root.manager.transition.direction = "left"
-                    root.manager.transition = NoTransition()
-                    root.confirmarHandler()
+            size_hint: [1,1]
+            pos_hint: {"x":0, "y":0}
+            Image:
+                source: "recursos/menuAvatar.png"
+                allow_stretch: True
+                keep_ratio: True
