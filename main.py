@@ -181,9 +181,12 @@ class TelaStatus(Screen):
         sm.current = ultima_tela
 
 class TelaMarketing(Screen):
-
     def voltar(self):
         sm.current = "areas"
+
+class TelaAjuda(Screen):
+    def voltar (self):
+        sm.current = ultima_tela
 
 class WindowManager(ScreenManager):
     pass
@@ -208,6 +211,7 @@ telas = [TelaLogin(name="login"),\
         TelaAreas(name="areas"),\
         TelaStatus(name="status"),\
         TelaMarketing(name="marketing"),\
+        TelaAjuda(name="ajuda"),\
         #TelaInventario(name="inventario"),\
         ]
 for tela in telas:
